@@ -20,7 +20,10 @@
 import Layout from "@www/common/layouts/Layout.astro";
 import Navbar from "@www/common/components/widgets/Navbar.astro";
 import { Image } from "astro:assets";
-import logo from "@www/common/assets/me.png";
+
+import xhyrom from "@www/common/assets/logo.png";
+import me from "@www/common/assets/me.png";
+
 import { AGE, SOCIALS } from "@www/common/config";
 ---
 
@@ -48,18 +51,37 @@ import { AGE, SOCIALS } from "@www/common/config";
   <main
     class="mt-24 flex flex-col items-center justify-center md:mt-64 md:flex-row"
   >
-    <div class="justify-cener flex items-center">
-      <Image
-        src={logo}
-        width={195}
-        alt="pfp"
-        draggable={false}
-        class={"rounded-full max-sm:mb-6"}
-      />
+    <div class="group h-[200px] w-[200px]">
+      <div
+        id="pfp-card"
+        class="relative h-full w-full transition-transform duration-[800ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] [transform-style:preserve-3d]"
+      >
+        <div
+          class="absolute h-full w-full overflow-hidden [backface-visibility:hidden]"
+        >
+          <Image
+            src={me}
+            width={195}
+            alt="Jozef Steinhübl pfp"
+            draggable={false}
+            class={"rounded-full"}
+          />
+        </div>
+        <div
+          class="absolute h-full w-full overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)]"
+        >
+          <Image src={xhyrom} width={200} alt="xHyroM pfp" draggable={false} />
+        </div>
+      </div>
     </div>
+
     <section class="text-center md:ml-6 md:text-left">
       <div class="flex flex-col drop-shadow-yellow">
-        <h1 class="text-6xl font-extrabold text-white">Jozef Steinhübl</h1>
+        <h1 class="text-6xl font-extrabold text-white">
+          <text-scrambler-with-image
+            names="Jozef Steinhübl,xHyroM"
+            image-card-id="pfp-card"></text-scrambler-with-image>
+        </h1>
         <p class="mt-2 text-xl text-gray-400">
           {AGE}-year-old computer enthusiast & student
         </p>
@@ -68,7 +90,7 @@ import { AGE, SOCIALS } from "@www/common/config";
       <ul class="my-5 flex justify-center text-white md:justify-start">
         {
           SOCIALS.map((social) => (
-            <li class="mr-4 ">
+            <li class="mr-4">
               <a class="h-10 w-10" href={social.link} title={social.name}>
                 <img
                   class="h-8 w-8 transition-all hover:-translate-y-1"
@@ -82,4 +104,8 @@ import { AGE, SOCIALS } from "@www/common/config";
       </ul>
     </section>
   </main>
+
+  <script>
+    import "@www/common/scripts/scrambler.ts";
+  </script>
 </Layout>
