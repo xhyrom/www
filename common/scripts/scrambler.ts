@@ -60,8 +60,8 @@ class TextScramblerWithImage extends HTMLElement {
   }
 
   private startCycleOnce() {
-    const holdDuration = parseInt(this.getAttribute("hold") || "1800", 10);
-    const initialDelay = parseInt(this.getAttribute("delay") || "500", 10);
+    const holdDuration = parseInt(this.getAttribute("hold") || "1200", 10);
+    const initialDelay = parseInt(this.getAttribute("delay") || "1000", 10);
 
     setTimeout(() => {
       this.cycleNextName(holdDuration);
