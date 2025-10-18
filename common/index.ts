@@ -43,6 +43,7 @@ function lookup(dir: string, base = dir): string[] {
 
 export interface CommonIntegrationOptions {
   site: string;
+  contact: string;
   branding: string;
 }
 

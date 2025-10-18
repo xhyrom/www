@@ -18,4 +18,8 @@
 
 import { defineConfig } from "@www/common/astro.config.ts";
 
-export default defineConfig("https://xhyrom.dev", "xhyrom");
+export default defineConfig(
+  "https://xhyrom.dev",
+  "contact@xhyrom.dev",
+  "xhyrom",
+);

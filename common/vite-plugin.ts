@@ -33,7 +33,7 @@ export function createVitePlugin(options: CommonIntegrationOptions): Plugin {
     load: (id) => {
       if (id !== resolvedVirtualModuleId) return;
 
-      return `export const site = ${JSON.stringify(options.site)};\nexport const branding = ${JSON.stringify(options.branding)};`;
+      return `export const site = ${JSON.stringify(options.site)};\nexport const hostname = ${JSON.stringify(new URL(options.site).hostname)};\nexport const contact = ${JSON.stringify(options.contact)}\nexport const branding = ${JSON.stringify(options.branding)};`;
     },
   };
 }

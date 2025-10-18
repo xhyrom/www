@@ -19,12 +19,12 @@ import icon from "astro-icon";
 import minify from "../astro-integrations/minify";
 import common from "@www/common";
 
-export const defineConfig = (site: string, branding: string) =>
+export const defineConfig = (site: string, contact: string, branding: string) =>
   astroDefineConfig({
     site,
     prefetch: true,
     integrations: [
-      common({ site, branding }),
+      common({ site, contact, branding }),
       tailwind(),
       sitemap(),
       compress({

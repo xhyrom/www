@@ -18,4 +18,8 @@
 
 import { defineConfig } from "@www/common/astro.config.ts";
 
-export default defineConfig("https://steinhubl.com", "Jozef Steinhübl");
+export default defineConfig(
+  "https://steinhubl.com",
+  "jozef@steinhubl.com",
+  "Jozef Steinhübl",
+);

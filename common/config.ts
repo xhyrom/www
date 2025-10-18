@@ -16,6 +16,8 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { contact } from "virtual:cfg";
+
 export const AGE = 16;
 
 export const SOCIALS = [
@@ -23,6 +25,11 @@ export const SOCIALS = [
     name: "GitHub",
     link: "https://github.com/xhyrom/",
     icon: "github.svg",
+  },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/jozefsteinhubl/",
+    icon: "linkedin.svg",
   },
   {
     name: "Discord",
@@ -35,18 +42,13 @@ export const SOCIALS = [
     icon: "twitter.svg",
   },
   {
-    name: "Instagram",
-    link: "https://www.instagram.com/hyro.dev/",
-    icon: "instagram.svg",
-  },
-  {
     name: "ko-fi",
     link: "https://ko-fi.com/xhyrom",
     icon: "ko-fi.svg",
   },
   {
     name: "email",
-    link: "mailto:contact@xhyrom.dev",
+    link: `mailto:${contact}`,
     icon: "mail.svg",
   },
 ] satisfies {
