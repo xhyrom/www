@@ -185,6 +185,10 @@ export const SKILLS = [
     name: "IntelliJ IDEA",
     icon: "logos:intellij-idea",
   },
+  {
+    name: "RubyMine",
+    icon: "logos:rubymine",
+  },
 ] satisfies {
   name: string;
   icon: string;
