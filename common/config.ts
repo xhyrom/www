@@ -99,6 +99,16 @@ export const SKILLS = [
     icon: "logos:python",
   },
   {
+    name: "Ruby",
+    icon: "mdi:language-ruby",
+    color: "#f44336",
+  },
+  {
+    name: "Ruby on Rails",
+    icon: "simple-icons:rubyonrails",
+    color: "#f44336",
+  },
+  {
     name: "Java",
     icon: "logos:java",
   },
