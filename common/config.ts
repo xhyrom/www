@@ -18,7 +18,7 @@
 
 import { contact } from "virtual:cfg";
 
-export const AGE = 16;
+export const AGE = 17;
 
 export const SOCIALS = [
   {
