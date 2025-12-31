@@ -24,16 +24,22 @@
 <script>
   import { Fireworks } from "fireworks-js";
 
-  export const fireworksContainer = document.querySelector<HTMLDivElement>(
-    ".fireworks-container",
-  )!;
+  const date = new Date();
+  const month = date.getMonth();
+  const day = date.getDate();
 
-  const fireworks = new Fireworks(fireworksContainer, {
-    rocketsPoint: {
-      min: 0,
-      max: 100,
-    },
-    autoresize: true,
-  });
-  fireworks.start();
+  if ((month === 11 && day === 31) || (month === 0 && day === 1)) {
+    const fireworksContainer = document.querySelector<HTMLDivElement>(
+      ".fireworks-container",
+    )!;
+
+    const fireworks = new Fireworks(fireworksContainer, {
+      rocketsPoint: {
+        min: 0,
+        max: 100,
+      },
+      autoresize: true,
+    });
+    fireworks.start();
+  }
 </script>
