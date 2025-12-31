@@ -17,6 +17,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+import Fireworks from "../components/widgets/decorations/Fireworks.astro";
 import SEOEmbed from "../components/widgets/SEOEmbed.astro";
 import Snow from "../components/widgets/decorations/Snow.astro";
 
@@ -61,6 +62,7 @@ const { title, description, keywords, schemaOrg } = {
   <body class="overflow-x-hidden bg-dark-900 font-sans px-2">
     <slot />
     <Snow />
+    <Fireworks />
 
     <script>
       import "../scripts/menu.ts";
