@@ -1,5 +1,5 @@
 {
-  "name": "pale-parallax",
+  "name": "www",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -9,7 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
     "@iconify-json/devicon-plain": "^1.2.57",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "prettier": "^3.8.2",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.2"
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "wrangler": "^4.81.1"
   }
 }

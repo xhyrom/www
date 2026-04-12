@@ -1,0 +1,50 @@
+name: Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6
+
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+
+      - name: Create branch alias
+        id: alias
+        run: |
+          alias=$(echo "${{ github.head_ref }}" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]/-/g' | sed 's/^-//' | sed 's/-$//' | cut -c1-40)
+          echo "name=$alias" >> "$GITHUB_OUTPUT"
+
+      - name: Upload preview
+        id: preview
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: versions upload --preview-alias ${{ steps.alias.outputs.name }}
+
+      - name: Extract preview URL
+        id: url
+        run: |
+          url=$(echo "${{ steps.preview.outputs.command-output }}" | grep -oP 'https://[^\s]+\.workers\.dev' | tail -1)
+          echo "preview_url=$url" >> "$GITHUB_OUTPUT"
+
+      - name: Comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: preview
+          message: |
+            ## Preview Deployment
+
+            | | |
+            |---|---|
+            | **Preview URL** | ${{ steps.url.outputs.preview_url }} |
+            | **Alias** | `${{ steps.alias.outputs.name }}` |
+            | **Commit** | ${{ github.sha }} |
