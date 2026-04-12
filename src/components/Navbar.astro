@@ -13,14 +13,14 @@ import { links } from "../data/navigation.ts";
         <li>
           <a
             href={link.href}
-            class="group flex items-center justify-center gap-0 hover:gap-2 px-3 py-3 hover:px-5 bg-transparent hover:bg-white/10 text-neutral-400 hover:text-white rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            class="nav-link group flex items-center justify-center gap-0 hover:gap-2 [&.is-active]:gap-2 px-3 py-3 hover:px-5 [&.is-active]:px-5 bg-transparent hover:bg-white/10 [&.is-active]:bg-white/10 text-neutral-400 hover:text-white [&.is-active]:text-white rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
           >
             <Icon
               name={link.icon}
-              class="w-5 h-5 shrink-0 transition-transform duration-500 group-hover:scale-110"
+              class="w-5 h-5 shrink-0 transition-transform duration-500 group-hover:scale-110 group-[.is-active]:scale-110"
             />
 
-            <span class="overflow-hidden whitespace-nowrap text-sm font-medium max-w-0 opacity-0 group-hover:max-w-15 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
+            <span class="overflow-hidden whitespace-nowrap text-sm font-medium max-w-0 opacity-0 group-hover:max-w-15 group-[.is-active]:max-w-15 group-hover:opacity-100 group-[.is-active]:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
               {link.name}
             </span>
           </a>
@@ -29,3 +29,30 @@ import { links } from "../data/navigation.ts";
     }
   </ul>
 </nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => {
+              link.classList.remove("is-active");
+              if (link.getAttribute("href") === `#${entry.target.id}`) {
+                link.classList.add("is-active");
+              }
+            });
+          }
+        });
+      },
+      {
+        rootMargin: "-50% 0px -50% 0px",
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  });
+</script>

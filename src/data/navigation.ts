@@ -1,5 +1,5 @@
 export const links = [
-  { name: "Home", href: "#", icon: "lucide:house" },
+  { name: "Home", href: "#home", icon: "lucide:house" },
   { name: "Work", href: "#work", icon: "lucide:briefcase" },
   { name: "About", href: "#about", icon: "lucide:user" },
 ];
