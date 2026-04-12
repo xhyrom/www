@@ -1,0 +1,31 @@
+---
+import { Icon } from "astro-icon/components";
+
+import { links } from "../data/navigation.ts";
+---
+
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+  <ul
+    class="flex items-center gap-1 p-1.5 bg-neutral-900/60 backdrop-blur-lg border border-white/10 rounded-full shadow-2xl shadow-black/50"
+  >
+    {
+      links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="group flex items-center justify-center gap-0 hover:gap-2 px-3 py-3 hover:px-5 bg-transparent hover:bg-white/10 text-neutral-400 hover:text-white rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
+          >
+            <Icon
+              name={link.icon}
+              class="w-5 h-5 shrink-0 transition-transform duration-500 group-hover:scale-110"
+            />
+
+            <span class="overflow-hidden whitespace-nowrap text-sm font-medium max-w-0 opacity-0 group-hover:max-w-15 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
+              {link.name}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

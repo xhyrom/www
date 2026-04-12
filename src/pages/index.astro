@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Hero from "../components/hero/Hero.astro";
+import Work from "../components/work/Work.astro";
+import About from "../components/about/About.astro";
+---
+
+<Layout>
+  <main class="relative min-h-screen w-full pb-32">
+    <div
+      class="fixed top-0 left-1/2 -translate-x-1/2 w-200 h-100 bg-amber-400/10 blur-[120px] pointer-events-none -z-10"
+    >
+    </div>
+
+    <div class="relative z-10">
+      <Hero />
+      <Work />
+      <About />
+    </div>
+  </main>
+</Layout>

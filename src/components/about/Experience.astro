@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div>
+  <h3 class="text-2xl font-bold text-white mb-8">Experience & Education</h3>
+  <div class="space-y-8">
+    <div class="flex gap-6 group">
+      <div
+        class="w-14 h-14 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-amber-400/20 transition-all duration-300 shadow-lg"
+      >
+        <Icon name="lucide:briefcase" class="w-7 h-7 text-amber-400" />
+      </div>
+      <div>
+        <h4
+          class="text-2xl font-bold text-white flex flex-wrap items-center gap-3"
+        >
+          Junior Software Engineer
+          <span
+            class="text-xs font-bold px-3 py-1 rounded-full bg-amber-400/20 text-amber-400 tracking-wide uppercase"
+          >
+            Current
+          </span>
+        </h4>
+        <a
+          href="https://slovensko.digital"
+          target="_blank"
+          class="text-amber-400 hover:text-amber-300 font-medium hover:underline underline-offset-4 transition-colors text-lg"
+        >
+          Slovensko.Digital
+        </a>
+        <p class="text-sm text-neutral-500 font-medium mt-1">
+          Sep 2025 — Present
+        </p>
+      </div>
+    </div>
+
+    <div class="flex gap-6 group">
+      <div
+        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all duration-300 shadow-lg"
+      >
+        <Icon name="lucide:graduation-cap" class="w-7 h-7 text-neutral-300" />
+      </div>
+      <div>
+        <h4 class="text-2xl font-bold text-white">General Studies</h4>
+        <p class="text-neutral-300 text-lg">Gymnázium Karola Štúra v Modre</p>
+        <p class="text-sm text-neutral-500 font-medium mt-1">2020 — 2028</p>
+      </div>
+    </div>
+  </div>
+</div>

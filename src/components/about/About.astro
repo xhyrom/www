@@ -1,0 +1,95 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import me from "../../assets/me.png";
+import avatar from "../../assets/avatar.png";
+
+import Experience from "./Experience.astro";
+import Highlights from "./Highlights.astro";
+import Toolkit from "./Toolkit.astro";
+---
+
+<section
+  id="about"
+  class="scroll-mt-0 min-h-svh flex flex-col justify-center max-w-6xl mx-auto px-6 py-24"
+>
+  <div class="mb-16">
+    <div
+      class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-amber-400 mb-6 uppercase tracking-widest"
+    >
+      <Icon name="lucide:user" class="w-4 h-4" /> Who am I?
+    </div>
+    <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
+      Behind the Code.
+    </h2>
+  </div>
+
+  <div
+    class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-center mb-24"
+  >
+    <div
+      class="lg:col-span-2 space-y-6 text-lg text-neutral-400 leading-relaxed"
+    >
+      <p>
+        Hey, my name is <strong class="text-white">Jozef Steinhübl</strong> ("bl"
+        - not "bel", I'm not a bell), but online you'll probably find me as <strong
+          class="text-amber-400">hyro</strong
+        > or <strong class="text-amber-400">xhyrom</strong>.
+      </p>
+      <p>
+        I'm a 17-year-old developer who's been fascinated with building things
+        with code since I was ten. I love coming up with creative, efficient,
+        and useful solutions to problems. I enjoy exploring different languages
+        and tools, and continually learning new things as I go.
+      </p>
+      <p>
+        I believe that the best technology is open, transparent, and built with
+        purpose. That's why much of my work is open-source and available on
+        <a
+          href="https://github.com/xhyrom"
+          target="_blank"
+          class="text-amber-400 hover:text-amber-300 font-medium hover:underline underline-offset-4 transition-colors text-lg"
+        >
+          GitHub
+        </a>. Whether I'm building custom tools or contributing to projects used
+        by others, I love the collaborative nature of code.
+      </p>
+    </div>
+
+    <div
+      class="relative w-full h-64 flex items-center justify-center group cursor-pointer"
+      tabindex="0"
+    >
+      <div
+        class="absolute w-40 h-40 md:w-48 md:h-48 rounded-3xl -rotate-6 -translate-x-8 group-hover:-translate-x-20 group-focus:-translate-x-20 group-hover:rotate-[-15deg] group-focus:rotate-[-15deg] transition-all duration-700 shadow-2xl border border-white/10 overflow-hidden bg-neutral-900 z-0"
+      >
+        <Image
+          src={me}
+          alt="photo"
+          class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500"
+          width={200}
+          height={200}
+        />
+      </div>
+
+      <div
+        class="absolute w-40 h-40 md:w-48 md:h-48 rounded-3xl -rotate-6 translate-x-8 group-hover:translate-x-20 group-focus:translate-x-20 group-hover:rotate-15 group-focus:rotate-15 transition-all duration-700 shadow-2xl border-2 border-white/10 hover:border-amber-400/50 overflow-hidden bg-neutral-900 z-10 translate-y-4"
+      >
+        <Image
+          src={avatar}
+          alt="Yellow Cat Avatar"
+          class="w-full h-full object-cover"
+          width={200}
+          height={200}
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-24">
+    <Experience />
+    <Highlights />
+  </div>
+
+  <Toolkit />
+</section>

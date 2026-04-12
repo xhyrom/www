@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+
+import { socials } from "../data/navigation.ts";
+---
+
+<nav
+  class="fixed bottom-6 left-1/2 -translate-x-1/2 md:top-6 md:bottom-auto md:left-auto md:translate-x-0 md:right-6 z-50"
+>
+  <ul
+    class="flex items-center gap-1 p-1.5 bg-neutral-900/60 backdrop-blur-lg border border-white/10 rounded-full shadow-2xl shadow-black/50"
+  >
+    {
+      socials.map((social) => (
+        <li>
+          <a
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={social.name}
+            class="flex items-center justify-center p-2.5 text-neutral-400 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 hover:scale-110"
+          >
+            <Icon name={social.icon} class="w-4.5 h-4.5" />
+            <span class="sr-only">{social.name}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

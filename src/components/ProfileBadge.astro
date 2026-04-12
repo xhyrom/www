@@ -1,0 +1,14 @@
+---
+import { Image } from "astro:assets";
+import me from "../assets/me.png";
+---
+
+<div class="fixed top-6 left-6 z-50 hidden md:block">
+  <a
+    href="/"
+    aria-label="Home"
+    class="block rounded-full shadow-2xl shadow-black/50 transition-all duration-300 hover:scale-105 ring-1 ring-white/20 hover:ring-amber-400/50 overflow-hidden"
+  >
+    <Image src={me} alt="Jozef" class="w-12 h-12 object-cover" />
+  </a>
+</div>

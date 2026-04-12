@@ -1,0 +1,66 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  name: string;
+  url: string;
+  desc: string;
+  icon: string;
+  tag: string;
+  status: string;
+}
+
+const { name, url, desc, icon, tag, status } = Astro.props;
+---
+
+<a
+  href={url}
+  target="_blank"
+  class="group flex flex-col justify-between p-8 md:p-10 rounded-4xl bg-neutral-900/30 backdrop-blur-md border border-white/10 hover:border-amber-400/40 hover:bg-neutral-900/60 hover:-translate-y-1 shadow-xl hover:shadow-2xl hover:shadow-amber-400/10 transition-all duration-500 relative overflow-hidden min-h-60"
+>
+  <div
+    class="absolute inset-0 bg-linear-to-br from-amber-400/0 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+  >
+  </div>
+
+  <div class="relative z-10 flex flex-col h-full">
+    <div class="flex items-start justify-between mb-8">
+      <div
+        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-amber-400/40 group-hover:bg-amber-400/10 transition-all duration-500"
+      >
+        <Icon
+          name={icon}
+          class="w-7 h-7 text-neutral-300 group-hover:text-amber-400 transition-colors"
+        />
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span
+          class="px-3 py-1 rounded-full bg-white/5 text-xs font-medium text-neutral-300 border border-white/5"
+        >
+          {status}
+        </span>
+        <span
+          class="px-3 py-1 rounded-full bg-amber-400/10 text-xs font-semibold text-amber-400 border border-amber-400/20"
+        >
+          {tag}
+        </span>
+      </div>
+    </div>
+
+    <div class="mt-auto">
+      <h3
+        class="text-2xl font-bold text-white tracking-tight mb-3 flex items-center justify-between"
+      >
+        {name}
+        <Icon
+          name="lucide:arrow-up-right"
+          class="w-5 h-5 text-neutral-600 group-hover:text-amber-400 transition-colors"
+        />
+      </h3>
+      <p class="text-neutral-400 text-base leading-relaxed">
+        {desc}
+      </p>
+    </div>
+  </div>
+</a>
