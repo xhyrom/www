@@ -5,7 +5,8 @@ import { socials } from "../data/navigation.ts";
 ---
 
 <nav
-  class="fixed bottom-6 left-1/2 -translate-x-1/2 md:top-6 md:bottom-auto md:left-auto md:translate-x-0 md:right-6 z-50"
+  id="social-bar"
+  class="fixed bottom-6 left-1/2 -translate-x-1/2 md:top-6 md:bottom-auto md:left-auto md:translate-x-0 md:right-6 z-50 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] max-md:[&.is-hidden]:translate-y-24 max-md:[&.is-hidden]:opacity-0 max-md:[&.is-hidden]:pointer-events-none"
 >
   <ul
     class="flex items-center gap-1 p-1.5 bg-neutral-900/60 backdrop-blur-lg border border-white/10 rounded-full shadow-2xl shadow-black/50"
@@ -28,3 +29,45 @@ import { socials } from "../data/navigation.ts";
     }
   </ul>
 </nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const socialBar = document.getElementById("social-bar");
+    if (!socialBar) return;
+
+    let lastScrollY = window.scrollY;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+    const scrollThreshold = 15;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (window.innerWidth >= 768) {
+          socialBar.classList.remove("is-hidden");
+          return;
+        }
+
+        const currentScrollY = window.scrollY;
+
+        clearTimeout(scrollTimeout);
+
+        if (currentScrollY <= 50) {
+          socialBar.classList.remove("is-hidden");
+          lastScrollY = currentScrollY;
+        } else if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
+          if (currentScrollY > lastScrollY) {
+            socialBar.classList.add("is-hidden");
+          } else {
+            socialBar.classList.remove("is-hidden");
+          }
+          lastScrollY = currentScrollY;
+        }
+
+        scrollTimeout = setTimeout(() => {
+          socialBar.classList.remove("is-hidden");
+        }, 1500);
+      },
+      { passive: true },
+    );
+  });
+</script>
