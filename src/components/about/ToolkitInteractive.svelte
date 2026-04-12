@@ -1,9 +1,8 @@
 <script lang="ts">
   import { crossfade, fade } from "svelte/transition";
   import { quintOut } from "svelte/easing";
-  import Icon from "@iconify/svelte";
 
-  export let toolkit: { name: string; icon: string; desc: string }[] = [];
+  export let toolkit: { name: string; icon: string; desc: string; svg: string }[] = [];
 
   let activeTechName: string | null = null;
 
@@ -38,8 +37,8 @@
       on:click={() => (activeTechName = tech.name)}
       class="group flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900/40 backdrop-blur-md border border-white/10 text-sm font-medium text-neutral-300 hover:bg-neutral-800 hover:text-white hover:border-amber-400/50 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
     >
-      <div class="text-neutral-500 group-hover:text-amber-400 transition-colors flex items-center justify-center">
-        <Icon icon={tech.icon} width="16" height="16" />
+      <div class="text-neutral-500 group-hover:text-amber-400 transition-colors flex items-center justify-center w-4 h-4 [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current">
+        {@html tech.svg}
       </div>
 
       <div class="relative inline-flex items-center justify-center">
@@ -75,10 +74,10 @@
       role="presentation"
     >
       <div
-        class="w-20 h-20 rounded-3xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center mb-6 shadow-lg shadow-amber-400/5 text-amber-400"
+        class="w-20 h-20 rounded-3xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center mb-6 shadow-lg shadow-amber-400/5 text-amber-400 [&>svg]:w-10 [&>svg]:h-10 [&>svg]:fill-current"
         transition:fade={{ duration: 400, delay: 150 }}
       >
-        <Icon icon={tech.icon} width="40" height="40" />
+        {@html tech.svg}
       </div>
 
       <div class="h-10 flex items-center justify-center">

@@ -9,7 +9,6 @@
         "@iconify-json/devicon-plain": "^1.2.57",
         "@iconify-json/lucide": "^1.2.102",
         "@iconify-json/simple-icons": "^1.2.77",
-        "@iconify/svelte": "^5.2.1",
         "@tailwindcss/vite": "^4.2.2",
         "astro": "^6.1.5",
         "astro-icon": "^1.1.5",
@@ -132,8 +131,6 @@
     "@iconify-json/lucide": ["@iconify-json/lucide@1.2.102", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-Dm3EEqu5NrmzyDMB2U1+8yroEj2/dB9V4KlH0m/szwwF/ofSf0cPaGTZqkd1aExXjCor+vU53ttRMCGuXf+/cg=="],
 
     "@iconify-json/simple-icons": ["@iconify-json/simple-icons@1.2.77", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-oaENvo6C3BkAEWMlcQA3XemxU9v2SFOTlApSUCODAkIu1haeLCjzrmH3HgmGqjRnJjM+LevO8sA+MgdMHBFBDA=="],
-
-    "@iconify/svelte": ["@iconify/svelte@5.2.1", "", { "dependencies": { "@iconify/types": "^2.0.0" }, "peerDependencies": { "svelte": ">5.0.0" } }, "sha512-zHmsIPmnIhGd5gc95bNN5FL+GifwMZv7M2rlZEpa7IXYGFJm/XGHdWf6PWQa6OBoC+R69WyiPO9NAj5wjfjbow=="],
 
     "@iconify/tools": ["@iconify/tools@4.2.0", "", { "dependencies": { "@iconify/types": "^2.0.0", "@iconify/utils": "^2.3.0", "cheerio": "^1.1.2", "domhandler": "^5.0.3", "extract-zip": "^2.0.1", "local-pkg": "^1.1.2", "pathe": "^2.0.3", "svgo": "^3.3.2", "tar": "^7.5.2" } }, "sha512-WRxPva/ipxYkqZd1+CkEAQmd86dQmrwH0vwK89gmp2Kh2WyyVw57XbPng0NehP3x4V1LzLsXUneP1uMfTMZmUA=="],
 

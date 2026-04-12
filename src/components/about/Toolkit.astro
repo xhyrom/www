@@ -1,10 +1,36 @@
 ---
+import { readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
+
 import { toolkit } from "../../data/about";
 import ToolkitInteractive from "./ToolkitInteractive.svelte";
+
+const require = createRequire(import.meta.url);
+async function getLocalSVG(iconString: string) {
+  const [prefix, name] = iconString.split(":");
+
+  const jsonPath = require.resolve(`@iconify-json/${prefix}/icons.json`);
+  const fileContent = await readFile(jsonPath, "utf-8");
+  const json = JSON.parse(fileContent);
+
+  const iconDef = json.icons[name];
+  if (!iconDef) return "";
+
+  const width = iconDef.width || json.width || 24;
+  const height = iconDef.height || json.height || 24;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}">${iconDef.body}</svg>`;
+}
+
+const toolkitWithIcons = await Promise.all(
+  toolkit.map(async (tech) => {
+    return { ...tech, svg: await getLocalSVG(tech.icon) };
+  }),
+);
 ---
 
 <div class="pt-8 border-t border-white/10">
   <h2 class="text-2xl font-bold text-white mb-8">My Toolkit</h2>
 
-  <ToolkitInteractive client:visible toolkit={toolkit} />
+  <ToolkitInteractive client:visible toolkit={toolkitWithIcons} />
 </div>
