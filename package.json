@@ -12,14 +12,18 @@
     "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/svelte": "^8.0.4",
     "@iconify-json/devicon-plain": "^1.2.57",
     "@iconify-json/lucide": "^1.2.102",
     "@iconify-json/simple-icons": "^1.2.77",
+    "@iconify/svelte": "^5.2.1",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.5",
     "astro-icon": "^1.1.5",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.2.2"
+    "svelte": "^5.55.3",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "prettier": "^3.8.2",
