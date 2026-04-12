@@ -9,7 +9,7 @@
   "workers_dev": false,
   "preview_urls": true,
   "assets": {
-    "directory": "./public",
+    "directory": "./dist",
     "not_found_handling": "404-page",
   },
 }
