@@ -16,23 +16,8 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-module.exports = {
-  plugins: [
-    require.resolve("prettier-plugin-astro"),
-    require.resolve("prettier-plugin-svelte"),
-  ],
-  overrides: [
-    {
-      files: "*.astro",
-      options: {
-        parser: "astro",
-      },
-    },
-    {
-      files: "*.svelte",
-      options: {
-        parser: "svelte",
-      },
-    },
-  ],
+import { vitePreprocess } from "@astrojs/svelte";
+
+export default {
+  preprocess: vitePreprocess(),
 };

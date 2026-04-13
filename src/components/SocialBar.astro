@@ -1,0 +1,91 @@
+---
+/**
+ * @license
+ * Copyright (c) 2022 Jozef Steinhübl
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import { Icon } from "astro-icon/components";
+
+import { socials } from "../data/navigation.ts";
+---
+
+<nav
+  id="social-bar"
+  class="fixed bottom-6 left-1/2 -translate-x-1/2 md:top-6 md:bottom-auto md:left-auto md:translate-x-0 md:right-6 z-50 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] max-md:[&.is-hidden]:translate-y-24 max-md:[&.is-hidden]:opacity-0 max-md:[&.is-hidden]:pointer-events-none"
+>
+  <ul
+    class="flex items-center gap-1 p-1.5 bg-neutral-900/60 backdrop-blur-lg border border-white/10 rounded-full shadow-2xl shadow-black/50"
+  >
+    {
+      socials.map((social) => (
+        <li>
+          <a
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={social.name}
+            class="flex items-center justify-center p-2.5 text-neutral-400 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 hover:scale-110"
+          >
+            <Icon name={social.icon} class="w-4.5 h-4.5" />
+            <span class="sr-only">{social.name}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const socialBar = document.getElementById("social-bar");
+    if (!socialBar) return;
+
+    let lastScrollY = window.scrollY;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+    const scrollThreshold = 15;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (window.innerWidth >= 768) {
+          socialBar.classList.remove("is-hidden");
+          return;
+        }
+
+        const currentScrollY = window.scrollY;
+
+        clearTimeout(scrollTimeout);
+
+        if (currentScrollY <= 50) {
+          socialBar.classList.remove("is-hidden");
+          lastScrollY = currentScrollY;
+        } else if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
+          if (currentScrollY > lastScrollY) {
+            socialBar.classList.add("is-hidden");
+          } else {
+            socialBar.classList.remove("is-hidden");
+          }
+          lastScrollY = currentScrollY;
+        }
+
+        scrollTimeout = setTimeout(() => {
+          socialBar.classList.remove("is-hidden");
+        }, 1500);
+      },
+      { passive: true },
+    );
+  });
+</script>

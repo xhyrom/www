@@ -1,0 +1,142 @@
+---
+/**
+ * @license
+ * Copyright (c) 2022 Jozef Steinhübl
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import me from "../../assets/me.png";
+import avatar from "../../assets/avatar.png";
+
+import Experience from "./Experience.astro";
+import Highlights from "./Highlights.astro";
+import Toolkit from "./Toolkit.astro";
+---
+
+<section
+  id="about"
+  class="scroll-mt-0 min-h-svh flex flex-col justify-center max-w-6xl mx-auto px-6 py-24"
+>
+  <div class="mb-16">
+    <div
+      class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-amber-400 mb-6 uppercase tracking-widest"
+    >
+      <Icon name="lucide:user" class="w-4 h-4" /> Who am I?
+    </div>
+    <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
+      Behind the Code.
+    </h2>
+  </div>
+
+  <div
+    class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-center mb-24"
+  >
+    <div
+      class="lg:col-span-2 space-y-6 text-lg text-neutral-400 leading-relaxed"
+    >
+      <p>
+        Hey, my name is <strong class="text-white">Jozef Steinhübl</strong> ("bl"
+        - not "bel", I'm not a bell), but online you'll probably find me as <strong
+          class="text-amber-400">hyro</strong
+        >, <strong class="text-amber-400">hyriik</strong> or <strong
+          class="text-amber-400">xhyrom</strong
+        >.
+      </p>
+      <p>
+        I'm a 17-year-old developer who's been fascinated with building things
+        with code since I was ten. I love coming up with creative, efficient,
+        and useful solutions to problems. I enjoy exploring different languages
+        and tools, and continually learning new things as I go.
+      </p>
+      <p>
+        I believe that the best technology is open, transparent, and built with
+        purpose. That's why much of my work is open-source and available on
+        <a
+          href="https://github.com/xhyrom"
+          target="_blank"
+          class="text-amber-400 hover:text-amber-300 font-medium hover:underline underline-offset-4 transition-colors text-lg"
+          >GitHub</a
+        >. Whether I'm building custom tools or contributing to projects used by
+        others, I love the collaborative nature of code.
+      </p>
+    </div>
+
+    <div
+      id="about-images"
+      class="relative w-full h-64 flex items-center justify-center group perspective-1000"
+    >
+      <div
+        class="absolute w-40 h-40 md:w-48 md:h-48 rounded-3xl transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-2xl border border-white/10 overflow-hidden bg-neutral-900 cursor-pointer
+        opacity-0 translate-y-12 scale-90 rotate-0 z-0
+        group-[.is-visible]:opacity-100 group-[.is-visible]:-translate-x-12 group-[.is-visible]:md:-translate-x-16 group-[.is-visible]:-rotate-12 group-[.is-visible]:scale-100
+        hover:scale-110! hover:-rotate-6! hover:z-20! hover:shadow-amber-400/20"
+      >
+        <Image
+          src={me}
+          alt="photo"
+          class="w-full h-full object-cover opacity-60 hover:opacity-100 transition-opacity duration-500"
+          width={200}
+          height={200}
+        />
+      </div>
+
+      <div
+        class="absolute w-40 h-40 md:w-48 md:h-48 rounded-3xl transition-all duration-1000 delay-100 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-2xl border-2 border-white/10 hover:border-amber-400/50 overflow-hidden bg-neutral-900 cursor-pointer
+        opacity-0 translate-y-12 scale-90 rotate-0 z-10
+        group-[.is-visible]:opacity-100 group-[.is-visible]:translate-x-12 group-[.is-visible]:md:translate-x-16 group-[.is-visible]:rotate-12 group-[.is-visible]:scale-100 group-[.is-visible]:translate-y-4
+        hover:scale-110! hover:rotate-6! hover:z-20! hover:shadow-amber-400/20"
+      >
+        <Image
+          src={avatar}
+          alt="avatar"
+          class="w-full h-full object-cover"
+          width={200}
+          height={200}
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-24">
+    <Experience />
+    <Highlights />
+  </div>
+
+  <Toolkit />
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const imagesContainer = document.getElementById("about-images");
+
+    if (imagesContainer) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.4 },
+      );
+
+      observer.observe(imagesContainer);
+    }
+  });
+</script>

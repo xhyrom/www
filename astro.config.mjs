@@ -16,23 +16,20 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-module.exports = {
-  plugins: [
-    require.resolve("prettier-plugin-astro"),
-    require.resolve("prettier-plugin-svelte"),
-  ],
-  overrides: [
-    {
-      files: "*.astro",
-      options: {
-        parser: "astro",
-      },
-    },
-    {
-      files: "*.svelte",
-      options: {
-        parser: "svelte",
-      },
-    },
-  ],
-};
+// @ts-check
+import { defineConfig } from "astro/config";
+
+import tailwindcss from "@tailwindcss/vite";
+
+import icon from "astro-icon";
+
+import svelte from "@astrojs/svelte";
+
+// https://astro.build/config
+export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
+  integrations: [icon(), svelte()],
+});
