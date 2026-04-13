@@ -22,6 +22,14 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import SocialBar from "../components/SocialBar.astro";
 import ProfileBadge from "../components/ProfileBadge.astro";
+
+const { title, description, keywords } = {
+  title: "Jozef Steinhübl",
+  description: "Hiya, i'm a 17-year-old computer enthusiast and student",
+  keywords:
+    "jozefsteinhubl steinhubl xhyrom developer dev hyro hyrousek hyriik",
+  ...Astro.props,
+};
 ---
 
 <!doctype html>
@@ -32,6 +40,16 @@ import ProfileBadge from "../components/ProfileBadge.astro";
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>Jozef Steinhübl</title>
+
+    <meta name="keywords" content={keywords} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
   </head>
   <body
     class="bg-neutral-950 text-white antialiased selection:bg-amber-400/30 selection:text-amber-100"
