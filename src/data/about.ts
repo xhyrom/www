@@ -146,6 +146,12 @@ export const highlights = [
     icon: "lucide:trophy",
   },
   {
+    title: "Slovak Olympiad in Artificial Intelligence",
+    desc: "2nd Place in the 2025/2026 National Finals",
+    icon: "lucide:brain",
+    href: "https://www.ncdtv.sk/olympiada-v-umelej-inteligencii/",
+  },
+  {
     title: "Tour de App",
     desc: "3rd Place in the 2024/2025 Finals",
     icon: "lucide:medal",
